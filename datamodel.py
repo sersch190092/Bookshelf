@@ -1,6 +1,9 @@
 """Model of database is declared here."""
 
 import sqlalchemy
+import sqlalchemy.ext.declarative
+
+
 
 Base = sqlalchemy.ext.declarative.declarative_base()
 
@@ -22,9 +25,9 @@ class Authors(Base):
     """Create Authors representation."""
 
     __tablename__ = "Authors"
-    author_id = sqlalchemy.Column(sqlalchemy.Integer, primay_key=True)
+    author_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     first_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-    last_naem = sqlalchemy.Column(sqlalchemy.String, nullable=False)
+    last_name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
 
 class Category(Base):
@@ -35,7 +38,7 @@ class Category(Base):
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
 
-class book_author(Base):
+class Book_author(Base):
     """Create crosstable for book and authors."""
 
     __tablename__ = "book_author"
@@ -44,4 +47,3 @@ class book_author(Base):
                                 nullable=False)
     author_id = sqlalchemy.Column(sqlalchemy.ForeignKey("Authors.author_id"),
                                   nullable=False)
-
