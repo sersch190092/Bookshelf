@@ -4,7 +4,6 @@ import sqlalchemy
 import sqlalchemy.ext.declarative
 
 
-
 Base = sqlalchemy.ext.declarative.declarative_base()
 
 
@@ -19,6 +18,9 @@ class Books(Base):
     category_id = sqlalchemy.Column(sqlalchemy.ForeignKey(
                                     "Category.category_id"),
                                     nullable=False)
+    author_id = sqlalchemy.Column(sqlalchemy.ForeignKey(
+                                  "Authors.author_id"),
+                                  nullable=False)
 
 
 class Authors(Base):
@@ -37,13 +39,3 @@ class Category(Base):
     category_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
 
-
-class Book_author(Base):
-    """Create crosstable for book and authors."""
-
-    __tablename__ = "book_author"
-    book_author_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-    book_id = sqlalchemy.Column(sqlalchemy.ForeignKey("Books.book_id"),
-                                nullable=False)
-    author_id = sqlalchemy.Column(sqlalchemy.ForeignKey("Authors.author_id"),
-                                  nullable=False)
