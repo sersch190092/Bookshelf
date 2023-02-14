@@ -12,10 +12,12 @@ def main():
     session_factory = sqlalchemy.orm.sessionmaker()
     session_factory.configure(bind=db_connection)
     with session_factory() as session:
-        new_book = Books(book_name="Heartstopper Volume 1", book_pages=288, publish_year=2019, category_id=1, author_id=1)
+        new_book = Books(book_name="Heartstopper Volume 1", book_pages=288, publish_year=2019,
+                         category_id=1, author_id=1)
         session.add(new_book)
         session.commit()
-        new_book = Books(book_name="Die Welle", book_pages=192, publish_year=1997, category_id=2, author_id=2)
+        new_book = Books(book_name="Die Welle", book_pages=192, publish_year=1997, category_id=2,
+                         author_id=2)
         session.add(new_book)
         session.commit()
 
@@ -33,9 +35,10 @@ def main():
         session.add(new_category)
         session.commit()
 
+
 if __name__ == "__main__":
     root = Root()
     root.draw_Buttons()
     root.draw_booktable()
     root.root.mainloop()
-    
+    main()

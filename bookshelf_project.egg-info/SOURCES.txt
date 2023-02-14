@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+bookshelf_project.egg-info/PKG-INFO
+bookshelf_project.egg-info/SOURCES.txt
+bookshelf_project.egg-info/dependency_links.txt
+bookshelf_project.egg-info/not-zip-safe
+bookshelf_project.egg-info/requires.txt
+bookshelf_project.egg-info/top_level.txt

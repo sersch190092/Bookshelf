@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: bookshelf-project
+Version: 1.0.0
+Summary: Bookshelf for personal use
+Home-page: https://github.com
+Author: Matthias Serschön
+Author-email: sersch190092@sr.htlweiz.at
+Keywords: logging,pytest,file,parser,output,input,restful,rest,fastapi

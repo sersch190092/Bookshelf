@@ -38,4 +38,3 @@ class Category(Base):
     __tablename__ = "Category"
     category_id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String, nullable=False)
-

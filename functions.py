@@ -3,6 +3,7 @@ import sqlalchemy
 from datamodel import Authors, Base, Books, Category
 from sqlalchemy.orm import sessionmaker
 
+
 class Functions:
     """Run Main function."""
 
@@ -13,12 +14,16 @@ class Functions:
         self.session = Session()
 
     def create_book(self, Book_name, Book_pages, Publish_year, Category_name, Author_id):
-        Category = self.session.query(Category).filter_by(name=Category_name).first()
-        if Category is None:
+        print(Book_name)
+
+        category = self.session.query(Category).filter_by(name=Category_name).first()
+        if category is None:
             self.create_category(Category_name)
         else:
             category_id = self.session.query(Category).filter_by(name=Category_name).first()
-            new_book = Books(book_name=Book_name, book_pages=Book_pages, publish_year=Publish_year,category_id=category_id.category_id, author_id=Author_id)
+            new_book = Books(book_name=Book_name, book_pages=Book_pages,
+                             publish_year=Publish_year, category_id=category_id.category_id,
+                             author_id=Author_id)
             self.session.add(new_book)
             self.session.commit()
 
@@ -33,10 +38,14 @@ class Functions:
         self.session.commit()
 
     def delete_book(self, Book_name):
-        self.session.query(Books).filter_by().delete()
+        self.session.query(Books).filter_by(book_name=Book_name).delete()
+        self.session.commit()
 
-    def delete_author(self, author_id):
-        self.session.query(Authors).filter_by().delete()
+    def delete_author(self, Author_id):
+        self.session.query(Authors).filter_by(author_id=Author_id).delete()
+
+    def delete_category(self, Category_id):
+        self.session.query(Category).filter_by(category_id=Category_id).delete()
 
     def get_book_count(self):
         value = self.session.query(Books).count()
